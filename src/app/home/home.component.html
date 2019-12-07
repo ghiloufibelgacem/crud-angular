@@ -1,0 +1,83 @@
+<mat-toolbar color="primary">
+  <span class="title-center">Angular - Spring Compte Application</span>
+</mat-toolbar>
+
+<!-- TABLE FILTER -->
+<mat-form-field style="margin-top:16px;">
+  <input
+    matInput
+    (keyup)="applyFilter($event.target.value)"
+    placeholder="Filter"
+  />
+</mat-form-field>
+
+<!-- TABLE -->
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- FirstName Column -->
+    <ng-container matColumnDef="FirstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>FirstName</th>
+      <td mat-cell *matCellDef="let row">{{ row.firstName }}</td>
+    </ng-container>
+
+    <!-- LastName Column -->
+    <ng-container matColumnDef="LastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>LastName</th>
+      <td mat-cell *matCellDef="let row">{{ row.lastName }}</td>
+    </ng-container>
+
+    <!-- Address Column -->
+    <ng-container matColumnDef="Address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+      <!-- [style.color]="row.Address" -->
+      <td mat-cell *matCellDef="let row">
+        {{ row.address }}
+      </td>
+    </ng-container>
+
+    <!-- BUTTON TO EDIT -->
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>edit</th>
+      <td mat-cell *matCellDef="let row">
+        <!-- trigger click event and pass row.id to it -->
+        <button mat-icon-button color="accent" (click)="clientToUpdate(row.id)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- BUTTON TO DELETE -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>delete</th>
+      <td mat-cell *matCellDef="let row">
+        <!-- trigger click event and pass row.id to it -->
+        <button mat-icon-button color="warn" (click)="clientToDelete(row.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="accounts">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>accounts</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button color="primary" (click)="showAccounts(row.id)">
+          <mat-icon>account_balance</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[3, 4, 5]"></mat-paginator>
+</div>
+<button
+  mat-mini-fab
+  mat-icon-button
+  color="primary"
+  (click)="onAddClient()"
+  style="margin-top: 16px;"
+>
+  <mat-icon>add</mat-icon>
+</button>

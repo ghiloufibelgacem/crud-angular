@@ -1,0 +1,22 @@
+<h1 mat-dialog-title style="text-align: center;">DELETE A CLIENT</h1>
+<div mat-dialog-content>
+  <p>Do you really want to delete this client ?</p>
+</div>
+<mat-grid-list cols="2" rowHeight="35px">
+  <mat-grid-tile>
+    <button mat-button color="primary" (click)="onNoClick()">
+      Cancel
+    </button></mat-grid-tile
+  >
+  <mat-grid-tile
+    ><button mat-button (click)="onOk()" cdkFocusInitial>
+      Ok
+    </button></mat-grid-tile
+  >
+</mat-grid-list>
+<!-- <div mat-dialog-actions>
+  <button mat-button color="primary" (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onOk()" cdkFocusInitial>
+    Ok
+  </button>
+</div> -->

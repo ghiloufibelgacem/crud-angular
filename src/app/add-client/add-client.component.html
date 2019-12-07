@@ -1,0 +1,44 @@
+<div class="example-container">
+  <h1
+    mat-dialog-title
+    style="text-align: center;"
+    [innerText]="!editMode ? 'EDIT A CLIENT' : 'ADD A CLIENT'"
+  ></h1>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="First Name"
+      [(ngModel)]="client.firstName"
+      [value]="client.firstName"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Last Name"
+      [(ngModel)]="client.lastName"
+      [value]="client.lastName"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Address"
+      [(ngModel)]="client.address"
+      [value]="client.address"
+    />
+  </mat-form-field>
+
+  <mat-grid-list cols="2" rowHeight="35px">
+    <mat-grid-tile>
+      <button mat-button color="primary" (click)="onCancel()">
+        Cancel
+      </button></mat-grid-tile
+    >
+    <mat-grid-tile
+      ><button mat-button (click)="onOk()" cdkFocusInitial>
+        Ok
+      </button></mat-grid-tile
+    >
+  </mat-grid-list>
+</div>
